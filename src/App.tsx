@@ -1,21 +1,14 @@
-import "./App.css";
-import tw from "tailwind-styled-components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home/Home";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Container>
-      <div className="text-red-500">TEST</div>
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
-
-const Container = tw.div`
-    flex
-    items-center
-    justify-center
-    flex-col
-    w-full
-    bg-lime-400
-`;
