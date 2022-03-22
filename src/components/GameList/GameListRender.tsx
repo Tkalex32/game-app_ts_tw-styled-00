@@ -1,4 +1,5 @@
 import GameCard from "../GameCard/GameCard";
+import { List, ListItem } from "./styles";
 
 interface GameListProps {
   err?: string;
@@ -10,13 +11,13 @@ const GameListRender: React.FC<GameListProps> = ({ err, games }) => {
   if (games?.length === 0) <p>No games available</p>;
 
   return (
-    <ul>
+    <List>
       {games.map((game) => (
-        <li key={game.id}>
+        <ListItem key={game.id}>
           <GameCard content={game} />
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 
