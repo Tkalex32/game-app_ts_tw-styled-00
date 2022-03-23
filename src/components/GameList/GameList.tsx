@@ -1,28 +1,27 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
+import useFetch from "../../hooks/useFetch";
 import GameListRender from "./GameListRender";
 
 const GameList = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [err, setErr] = useState<string>("");
+  const [filter, setFilter] = useState<Filter>({});
+  const { games, error } = useFetch(filter);
 
-  useEffect(() => {
-    axios
-      .get("/games", {
-        baseURL: `https://${import.meta.env.VITE_API_HOST}/api`,
-        headers: {
-          "x-rapidapi-host": import.meta.env.VITE_API_HOST as string,
-          "x-rapidapi-key": import.meta.env.VITE_API_KEY as string,
-        },
-        params: {
-          platform: "browser",
-        },
-      })
-      .then((res) => setGames(res.data))
-      .catch((e) => setErr(e.message));
-  }, []);
+  const onFilterChange = useCallback(
+    (e: ChangeEvent<HTMLFormElement>): void => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
 
-  return <GameListRender games={games} err={err} />;
+      setFilter((current) => ({
+        ...current,
+        [form.name]: form.value,
+      }));
+    },
+    []
+  );
+
+  return (
+    <GameListRender games={games} err={error} onFilterChange={onFilterChange} />
+  );
 };
 
 export default GameList;

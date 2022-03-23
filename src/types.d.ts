@@ -11,3 +11,14 @@ type Game = {
   release_date: string;
   freetogame_profile_url: string;
 };
+
+type Filter = {
+  platform?: string;
+  genre?: string;
+  sortBy?: string;
+};
+
+type Resp = {
+  games: Game[];
+  error: string;
+};
