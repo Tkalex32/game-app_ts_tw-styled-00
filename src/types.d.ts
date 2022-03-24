@@ -1,4 +1,4 @@
-type Game = {
+interface Game {
   id: number;
   title: string;
   thumbnail: string;
@@ -10,6 +10,26 @@ type Game = {
   developer: string;
   release_date: string;
   freetogame_profile_url: string;
+}
+
+interface GameDetail extends Game {
+  status: string;
+  description: string;
+  minimum_system_requirements: SysReq;
+  screenshots: ScreenShot[];
+}
+
+type SysReq = {
+  os: string;
+  processor: string;
+  memory: string;
+  graphics: string;
+  storage: string;
+};
+
+type ScreenShot = {
+  id: number;
+  image: string;
 };
 
 type Filter = {
