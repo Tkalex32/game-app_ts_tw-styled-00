@@ -64,12 +64,13 @@ const ContainerBase = styled.div`
 `;
 
 export const Container = tw(ContainerBase)`
+  relative
   flex 
   flex-col
   items-center 
   justify-center 
   min-h-screen
-  my-2
+  mt-7
   mx-auto
   tablet:w-10/12
 `;
@@ -165,4 +166,17 @@ export const Thumbnail = tw.img`
   w-[80%]
   desktop:w-[45%]
   m-2
+`;
+
+const BackButtonBase = styled(Link)`
+  background-color: ${primaryColor};
+`;
+
+export const BackButton = tw(BackButtonBase)`
+  top-0
+  left-0
+  text-white 
+  rounded 
+  fixed
+  p-1
 `;

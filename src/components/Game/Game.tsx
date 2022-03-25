@@ -19,6 +19,7 @@ import {
   InfoImgContainer,
   SectionTitle,
   Thumbnail,
+  BackButton,
 } from "./styles";
 
 const Game = () => {
@@ -153,6 +154,9 @@ const Game = () => {
               ))}
             </InfoImgContainer>
           </Info>
+          <BackButton type="button" to="/">
+            Back To Home
+          </BackButton>
         </Container>
       )}
     </>
