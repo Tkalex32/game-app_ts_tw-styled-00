@@ -104,43 +104,68 @@ const Game = () => {
                 </InfoBoxBox>
               </InfoBox>
             </Info>
-            <Info>
-              <SectionTitle>Minimum System Requirements (Windows)</SectionTitle>
-              <InfoBox $isCol={true}>
-                <InfoBoxBox>
-                  <InfoText>OS</InfoText>
-                  <InfoText>{game?.minimum_system_requirements.os}</InfoText>
-                </InfoBoxBox>
-                <InfoBoxBox>
-                  <InfoText>Processor</InfoText>
-                  <InfoText>
-                    {game?.minimum_system_requirements.processor}
-                  </InfoText>
-                </InfoBoxBox>
-              </InfoBox>
-              <InfoBox $isCol={true}>
-                <InfoBoxBox>
-                  <InfoText>Memory</InfoText>
-                  <InfoText>
-                    {game?.minimum_system_requirements.memory}
-                  </InfoText>
-                </InfoBoxBox>
-                <InfoBoxBox>
-                  <InfoText>Storage</InfoText>
-                  <InfoText>
-                    {game?.minimum_system_requirements.storage}
-                  </InfoText>
-                </InfoBoxBox>
-              </InfoBox>
-              <InfoBox $isCol={true}>
-                <InfoBoxBox>
-                  <InfoText>Graphics</InfoText>
-                  <InfoText>
-                    {game?.minimum_system_requirements.graphics}
-                  </InfoText>
-                </InfoBoxBox>
-              </InfoBox>
-            </Info>
+            {!game?.minimum_system_requirements ? (
+              <Info>
+                <SectionTitle>
+                  Minimum System Requirements (Browser)
+                </SectionTitle>
+                <InfoBox>
+                  <InfoBoxBox>
+                    <InfoText>
+                      {game?.title} is a browser based game and should run
+                      smoothly on practically any PC with a updated web-browser.
+                      <br />
+                      <br />
+                      If you have old hardware or software, you may still be
+                      able to play {game?.title}, but your game experience may
+                      suffer. For the best gameplay experience, we recommend the
+                      latest versions of Firefox, Chrome, or Internet Explorer.
+                    </InfoText>
+                    <InfoText></InfoText>
+                  </InfoBoxBox>
+                </InfoBox>
+              </Info>
+            ) : (
+              <Info>
+                <SectionTitle>
+                  Minimum System Requirements (Windows)
+                </SectionTitle>
+                <InfoBox $isCol={true}>
+                  <InfoBoxBox>
+                    <InfoText>OS</InfoText>
+                    <InfoText>{game?.minimum_system_requirements.os}</InfoText>
+                  </InfoBoxBox>
+                  <InfoBoxBox>
+                    <InfoText>Processor</InfoText>
+                    <InfoText>
+                      {game?.minimum_system_requirements.processor}
+                    </InfoText>
+                  </InfoBoxBox>
+                </InfoBox>
+                <InfoBox $isCol={true}>
+                  <InfoBoxBox>
+                    <InfoText>Memory</InfoText>
+                    <InfoText>
+                      {game?.minimum_system_requirements.memory}
+                    </InfoText>
+                  </InfoBoxBox>
+                  <InfoBoxBox>
+                    <InfoText>Storage</InfoText>
+                    <InfoText>
+                      {game?.minimum_system_requirements.storage}
+                    </InfoText>
+                  </InfoBoxBox>
+                </InfoBox>
+                <InfoBox $isCol={true}>
+                  <InfoBoxBox>
+                    <InfoText>Graphics</InfoText>
+                    <InfoText>
+                      {game?.minimum_system_requirements.graphics}
+                    </InfoText>
+                  </InfoBoxBox>
+                </InfoBox>
+              </Info>
+            )}
           </InfoWrapper>
           <Info>
             <SectionTitle>{game?.title} Screenshots</SectionTitle>
