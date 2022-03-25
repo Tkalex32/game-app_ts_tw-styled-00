@@ -5,7 +5,6 @@ import {
   primaryTextColor,
   secondaryColor,
   secondaryTextColor,
-  tertiaryTextColor,
 } from "../styles/theme";
 import { Link } from "react-router-dom";
 
@@ -70,7 +69,9 @@ export const Container = tw(ContainerBase)`
   items-center 
   justify-center 
   min-h-screen
-  m-2
+  my-2
+  mx-auto
+  tablet:w-10/12
 `;
 
 const InfoBase = styled.div`
@@ -81,34 +82,45 @@ export const Info = tw(InfoBase)`
   text-center
   flex
   flex-col
-  w-full
   my-4
+  w-[90%]
+  tablet:w-3/4
   `;
 
 export const DescContainer = tw.div`
   mt-4
   p-2
+  w-[90%]
+  tablet:w-[80%]
 `;
 
-export const Description = tw.span`
+export const Description = tw.span<DescriptionProps>`
 ${(p) => (p.$isReadMore ? "hidden" : "inline")}
 `;
 
 export const DescSwitch = tw.span`
   p-2
   block
-  z-10
+  w-max
   cursor-pointer
   hover:text-[#7a8288]
 `;
 
-export const InfoBox = tw.div`
+export const InfoWrapper = tw.div`
+  flex
+  flex-col
+  w-[90%]
+  justify-center
+  items-center
+`;
+
+export const InfoBox = tw.div<InfoBoxProps>`
   flex
 ${(p) => (p.$isCol ? "flex-col" : "flex-row")}
   justify-around
   align-middle
   text-left
-  w-ful
+  w-full
 `;
 
 export const InfoBoxBox = tw.div`
@@ -117,18 +129,40 @@ export const InfoBoxBox = tw.div`
   h-min
   flex-1
   px-2
-  `;
+  tablet:px-16
+`;
 
 const InfoTextBase = styled.p`
-  color: ${primaryTextColor};
+  color: ${secondaryTextColor};
 `;
 
 export const InfoText = tw(InfoTextBase)`
-  last:text-[#7a8288]
+  last:text-[#aaa]
   last:text-sm
   min-w-[6rem]
 `;
 
+const SectionTitleBase = styled.span`
+  color: ${primaryTextColor};
+`;
+
+export const SectionTitle = tw(SectionTitleBase)`
+  mb-2;
+  text-xl
+`;
+
 export const InfoImgContainer = tw.div`
-  
+  flex
+  flex-col
+  desktop:flex-row
+  desktop:flex-wrap
+  items-center
+  p-4
+  justify-center
+`;
+
+export const Thumbnail = tw.img`
+  w-[80%]
+  desktop:w-[45%]
+  m-2
 `;

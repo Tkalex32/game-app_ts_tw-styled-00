@@ -42,3 +42,11 @@ type Resp = {
   games: Game[];
   error: string;
 };
+
+interface DescriptionProps {
+  $isReadMore?: boolean;
+}
+
+interface InfoBoxProps {
+  $isCol?: boolean;
+}

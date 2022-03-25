@@ -8,6 +8,7 @@ import {
   Text,
   Title,
   Container,
+  InfoWrapper,
   Info,
   InfoBox,
   InfoBoxBox,
@@ -16,6 +17,8 @@ import {
   Description,
   DescSwitch,
   InfoImgContainer,
+  SectionTitle,
+  Thumbnail,
 } from "./styles";
 
 const Game = () => {
@@ -70,79 +73,85 @@ const Game = () => {
               {isReadMore ? "+ Read More" : "- Read Less"}
             </DescSwitch>
           </DescContainer>
+          <InfoWrapper>
+            <Info>
+              <SectionTitle>Additional Information</SectionTitle>
+              <InfoBox>
+                <InfoBoxBox>
+                  <InfoText>Developer</InfoText>
+                  <InfoText>{game?.developer}</InfoText>
+                </InfoBoxBox>
+                <InfoBoxBox>
+                  <InfoText>Publisher</InfoText>
+                  <InfoText>{game?.publisher}</InfoText>
+                </InfoBoxBox>
+              </InfoBox>
+              <InfoBox>
+                <InfoBoxBox>
+                  <InfoText>Release Date</InfoText>
+                  <InfoText>{game?.release_date}</InfoText>
+                </InfoBoxBox>
+                <InfoBoxBox>
+                  <InfoText>Platform</InfoText>
+                  <InfoText>{game?.platform}</InfoText>
+                </InfoBoxBox>
+              </InfoBox>
+              <InfoBox>
+                <InfoBoxBox>
+                  <InfoText>Genre</InfoText>
+                  <InfoText>{game?.genre}</InfoText>
+                </InfoBoxBox>
+              </InfoBox>
+            </Info>
+            <Info>
+              <SectionTitle>Minimum System Requirements (Windows)</SectionTitle>
+              <InfoBox $isCol={true}>
+                <InfoBoxBox>
+                  <InfoText>OS</InfoText>
+                  <InfoText>{game?.minimum_system_requirements.os}</InfoText>
+                </InfoBoxBox>
+                <InfoBoxBox>
+                  <InfoText>Processor</InfoText>
+                  <InfoText>
+                    {game?.minimum_system_requirements.processor}
+                  </InfoText>
+                </InfoBoxBox>
+              </InfoBox>
+              <InfoBox $isCol={true}>
+                <InfoBoxBox>
+                  <InfoText>Memory</InfoText>
+                  <InfoText>
+                    {game?.minimum_system_requirements.memory}
+                  </InfoText>
+                </InfoBoxBox>
+                <InfoBoxBox>
+                  <InfoText>Storage</InfoText>
+                  <InfoText>
+                    {game?.minimum_system_requirements.storage}
+                  </InfoText>
+                </InfoBoxBox>
+              </InfoBox>
+              <InfoBox $isCol={true}>
+                <InfoBoxBox>
+                  <InfoText>Graphics</InfoText>
+                  <InfoText>
+                    {game?.minimum_system_requirements.graphics}
+                  </InfoText>
+                </InfoBoxBox>
+              </InfoBox>
+            </Info>
+          </InfoWrapper>
           <Info>
-            <Text>Additional Information</Text>
-            <InfoBox>
-              <InfoBoxBox>
-                <InfoText>Developer</InfoText>
-                <InfoText>{game?.developer}</InfoText>
-              </InfoBoxBox>
-              <InfoBoxBox>
-                <InfoText>Publisher</InfoText>
-                <InfoText>{game?.publisher}</InfoText>
-              </InfoBoxBox>
-            </InfoBox>
-            <InfoBox>
-              <InfoBoxBox>
-                <InfoText>Release Date</InfoText>
-                <InfoText>{game?.release_date}</InfoText>
-              </InfoBoxBox>
-              <InfoBoxBox>
-                <InfoText>Platform</InfoText>
-                <InfoText>{game?.platform}</InfoText>
-              </InfoBoxBox>
-            </InfoBox>
-            <InfoBox>
-              <InfoBoxBox>
-                <InfoText>Genre</InfoText>
-                <InfoText>{game?.genre}</InfoText>
-              </InfoBoxBox>
-            </InfoBox>
-          </Info>
-          <Info>
-            <Text>Minimum System Requirements (Windows)</Text>
-            <InfoBox $isCol={true}>
-              <InfoBoxBox>
-                <InfoText>OS</InfoText>
-                <InfoText>{game?.minimum_system_requirements.os}</InfoText>
-              </InfoBoxBox>
-              <InfoBoxBox>
-                <InfoText>Processor</InfoText>
-                <InfoText>
-                  {game?.minimum_system_requirements.processor}
-                </InfoText>
-              </InfoBoxBox>
-            </InfoBox>
-            <InfoBox $isCol={true}>
-              <InfoBoxBox>
-                <InfoText>Memory</InfoText>
-                <InfoText>{game?.minimum_system_requirements.memory}</InfoText>
-              </InfoBoxBox>
-              <InfoBoxBox>
-                <InfoText>Storage</InfoText>
-                <InfoText>{game?.minimum_system_requirements.storage}</InfoText>
-              </InfoBoxBox>
-            </InfoBox>
-            <InfoBox $isCol={true}>
-              <InfoBoxBox>
-                <InfoText>Graphics</InfoText>
-                <InfoText>
-                  {game?.minimum_system_requirements.graphics}
-                </InfoText>
-              </InfoBoxBox>
-            </InfoBox>
-          </Info>
-          <Info>
-            <Text>{game?.title} Screenshots</Text>
-            <InfoBox>
-              <InfoBoxBox>
-                <InfoImgContainer>
-                  {game?.screenshots.map((image) => (
-                    <img src={image.image} alt={game.title} key={image.id} />
-                  ))}
-                </InfoImgContainer>
-              </InfoBoxBox>
-            </InfoBox>
+            <SectionTitle>{game?.title} Screenshots</SectionTitle>
+            <InfoImgContainer>
+              {game?.screenshots.map((image) => (
+                <Thumbnail
+                  src={image.image}
+                  alt={`${game.title} thumbnail`}
+                  key={image.id}
+                />
+              ))}
+            </InfoImgContainer>
           </Info>
         </Container>
       )}
